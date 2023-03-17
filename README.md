@@ -21,6 +21,9 @@ The solution architecture can be broken up into two main sections:
 7. The Lambda function puts the message in the correct format expected by the LINE Messaging API and sends it over to the LINE Platform.
 8. The LINE Messaging API receives the request and processes the message content, finally sending the message to the corresponding user on the LINE Mobile App.
 
+> **Note** 
+> Line is a third-party service subject to additional terms and charges. Amazon Web Services isn’t responsible for any third-party service that you use to send messages with custom channels.
+
 ## Step-by-Step Deployment Guide
 
 ### Prerequisites
