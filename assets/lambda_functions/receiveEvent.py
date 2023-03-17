@@ -1,4 +1,4 @@
-import boto3,json,logging,os,time
+import boto3,json,logging,os
 
 from websocket import create_connection
 
@@ -9,20 +9,13 @@ from linebot.exceptions import (
     InvalidSignatureError,LineBotApiError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,FollowEvent,UnfollowEvent
+    FollowEvent,UnfollowEvent
 )
 
 from botocore.exceptions import ClientError
 
 pinpoint = boto3.client('pinpoint')
-chat = boto3.client('connectparticipant')
-connect = boto3.client('connect')
-step_function = boto3.client('stepfunctions')
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('line-chat-history')
 
-# Set up the Amazon Lex client
-lex_client = boto3.client('lex-runtime', region_name='us-east-1')
 
 def lambda_handler(event,context):
     # Set up logging
@@ -42,84 +35,6 @@ def lambda_handler(event,context):
     secret = get_secret()
     line_bot_api = LineBotApi(secret['YOUR_CHANNEL_ACCESS_TOKEN'])
     handler = WebhookHandler(secret['YOUR_CHANNEL_SECRET'])
-    
-    ## Handle Text Message Event
-    @handler.add(MessageEvent, message=TextMessage)    
-    def handle_text_message(event):
-        line_user_id = event.source.user_id
-        message = event.message.text
-        userProfile = line_bot_api.get_profile(line_user_id)
-        line_display_name = userProfile.display_name
-        
-        ## Start Chat with Agent
-        
-        if "CHAT" in message.upper():
-            start_response = connect.start_chat_contact(
-                        InstanceId=os.environ.get('CONNECT_INSTANCE_ID'),
-                        ContactFlowId=os.environ.get('CONNECT_CONTACT_FLOW_ID'),
-                        Attributes= {
-                            'username': line_user_id
-                        },
-                        ParticipantDetails= {
-                            'DisplayName': line_display_name
-                        }
-                    )
-            logging.info("Start Response:")
-            logging.info(start_response)
-            """
-            ## Create Streaming Chat Connection
-            streaming_response = connect.start_contact_streaming(
-                InstanceId=os.environ.get('CONNECT_INSTANCE_ID'),
-                ContactId=start_response['ContactId'],
-                ChatStreamingConfiguration={
-                    'StreamingEndpointArn': os.environ.get('SNS_TOPIC_ARN')
-                },
-                ClientToken=start_response['ParticipantToken']
-            )
-            """
-            
-            ## Create Participant Connection
-            create_response = chat.create_participant_connection(
-                        Type=['WEBSOCKET','CONNECTION_CREDENTIALS'],
-                        ParticipantToken=start_response['ParticipantToken']
-                    )
-            logging.info("Create Participant Connection Response:")
-            logging.info(create_response)
-            
-            
-            put_record(line_user_id,start_response['ContactId'],start_response['ParticipantToken'],create_response['ConnectionCredentials']['ConnectionToken'])
-            
-            response = step_function.start_execution(
-                    stateMachineArn=os.environ.get('STATE_MACHINE_ARN'),
-                    input=json.dumps({'line_user_id': line_user_id,'start_position': 0, 'wait': 0})
-                )
-            logging.info(response)
-        else:
-            record = get_record(line_user_id)
-
-            logging.info('Found Record: ')
-            logging.info(record)
-    
-            create_response = chat.create_participant_connection(
-                Type=['WEBSOCKET','CONNECTION_CREDENTIALS'],
-                ParticipantToken=record['participant_token']
-            )
-    
-            logging.info(create_response)
-    
-            ws = create_connection(create_response['Websocket']['Url'])
-            ws.send('{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}')
-            ws.close()
-            logging.info('Closed: ' + create_response['Websocket']['Url'])
-    
-            response = chat.send_message(
-                ContentType='text/plain',
-                Content=message,
-                ConnectionToken=create_response['ConnectionCredentials']['ConnectionToken']
-            )
-    
-            logging.info(create_response)
-        
     
     ## Handle Follow Event and add the user to Pinpoint Endpoint
     @handler.add(FollowEvent)
@@ -192,22 +107,3 @@ def get_secret():
     # Decrypts secret using the associated KMS key and return a dict
     secret = json.loads(get_secret_value_response['SecretString'])
     return(secret)
-    
-def put_record(line_user_id, contact_id, participant_token, connection_token):
-    table.put_item(
-        Item= {
-            'line_user_id': line_user_id,
-            'contact_id': contact_id,
-            'participant_token': participant_token,
-            'connection_token': connection_token
-        }
-    )
-
-
-def get_record(line_user_id):
-    response = table.get_item(
-        Key={
-            'line_user_id': line_user_id,
-        }
-    )
-    return response['Item']
