@@ -16,7 +16,7 @@ The solution architecture can be broken up into two main sections:
 4. The backend Lambda compares the request body with the `x-LINE-signature` request header to confirm that the request was sent from the LINE Platform, as recommended by [LINE API document](https://developers.LINE.biz/en/reference/messaging-api/#signature-validation). Afterwards, the Lambda function processes the user events:
    1. If the user _subscribes_ to the channel, a new endpoint will be added to Amazon Pinpoint's user database.
    2. If the user _unsubscribes_ from the channel, the corresponding endpoint (identified by the LINE User ID) is deleted from Amazon Pinpoint's user database.
-5. Amazon Pinpoint initiates a call to a Lambda function via [Custom Channel](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html). Of particular importance would be the `Data` field, which can be specified within the Amazon Pinpoin console to modify the content of the message.
+5. Amazon Pinpoint initiates a call to a Lambda function via [Custom Channel](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html). Of particular importance would be the `Data` field, which can be specified within the Amazon Pinpoint console to modify the content of the message.
 6. If the message contains image/audio/video files, the Lambda will request the file from the corresponding Amazon S3 buckets to be included in the payload for step 7.
 7. The Lambda function puts the message in the correct format expected by the LINE Messaging API and sends it over to the LINE Platform.
 8. The LINE Messaging API receives the request and processes the message content, finally sending the message to the corresponding user on the LINE Mobile App.
