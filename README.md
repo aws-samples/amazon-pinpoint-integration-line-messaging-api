@@ -1,5 +1,7 @@
 # Line Pinpoint Integration Project
 
+Refer to this [AWS Blog](https://aws-blogs-prod.amazon.com/messaging-and-targeting/how-to-build-line-messaging-into-business-communications/) for more background.
+
 ## Architecture
 
 This solution uses [Amazon Pinpoint](https://aws.amazon.com/pinpoint/),[AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) and [LINE Messaging API](https://developers.LINE.biz/en/docs/messaging-api/overview/)
@@ -22,7 +24,7 @@ The solution architecture can be broken up into two main sections:
 8. The LINE Messaging API receives the request and processes the message content, finally sending the message to the corresponding user on the LINE Mobile App.
 
 > **Note** 
-> Line is a third-party service subject to additional terms and charges. Amazon Web Services isn’t responsible for any third-party service that you use to send messages with custom channels.
+> Line is a third-party service that is subjected to additional terms and charges. Amazon Web Services isn’t responsible for any third-party service that you use to send messages with custom channels.
 
 ## Step-by-Step Deployment Guide
 
