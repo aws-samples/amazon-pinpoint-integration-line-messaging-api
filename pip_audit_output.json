@@ -1,0 +1,370 @@
+{
+  "dependencies": [
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.64.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-cdk-asset-kubectl-v20",
+      "version": "2.1.1",
+      "vulns": []
+    },
+    {
+      "name": "publication",
+      "version": "0.0.3",
+      "vulns": []
+    },
+    {
+      "name": "typeguard",
+      "version": "2.13.3",
+      "vulns": []
+    },
+    {
+      "name": "jsii",
+      "version": "1.75.0",
+      "vulns": []
+    },
+    {
+      "name": "attrs",
+      "version": "22.2.0",
+      "vulns": []
+    },
+    {
+      "name": "cattrs",
+      "version": "22.2.0",
+      "vulns": []
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.1.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-cdk-asset-node-proxy-agent-v5",
+      "version": "2.0.64",
+      "vulns": []
+    },
+    {
+      "name": "aws-cdk-asset-awscli-v1",
+      "version": "2.2.75",
+      "vulns": []
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.5.0",
+      "vulns": []
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.8.2",
+      "vulns": []
+    },
+    {
+      "name": "six",
+      "version": "1.16.0",
+      "vulns": []
+    },
+    {
+      "name": "constructs",
+      "version": "10.1.257",
+      "vulns": []
+    },
+    {
+      "name": "line-bot-sdk",
+      "version": "2.4.1",
+      "vulns": []
+    },
+    {
+      "name": "requests",
+      "version": "2.28.1",
+      "vulns": []
+    },
+    {
+      "name": "idna",
+      "version": "3.4",
+      "vulns": []
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "2.1.1",
+      "vulns": []
+    },
+    {
+      "name": "certifi",
+      "version": "2022.12.7",
+      "vulns": []
+    },
+    {
+      "name": "urllib3",
+      "version": "1.26.14",
+      "vulns": []
+    },
+    {
+      "name": "future",
+      "version": "0.18.3",
+      "vulns": []
+    },
+    {
+      "name": "pip",
+      "version": "23.0.1",
+      "vulns": []
+    },
+    {
+      "name": "setuptools",
+      "version": "67.4.0",
+      "vulns": []
+    },
+    {
+      "name": "wheel",
+      "version": "0.38.4",
+      "vulns": []
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.8.3",
+      "vulns": []
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.3.1",
+      "vulns": []
+    },
+    {
+      "name": "async-timeout",
+      "version": "4.0.2",
+      "vulns": []
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.3.3",
+      "vulns": []
+    },
+    {
+      "name": "yarl",
+      "version": "1.8.2",
+      "vulns": []
+    },
+    {
+      "name": "multidict",
+      "version": "6.0.4",
+      "vulns": []
+    },
+    {
+      "name": "websocket-client",
+      "version": "1.5.1",
+      "vulns": []
+    },
+    {
+      "name": "boto3",
+      "version": "1.26.76",
+      "vulns": []
+    },
+    {
+      "name": "botocore",
+      "version": "1.29.76",
+      "vulns": []
+    },
+    {
+      "name": "s3transfer",
+      "version": "0.6.0",
+      "vulns": []
+    },
+    {
+      "name": "jmespath",
+      "version": "1.0.1",
+      "vulns": []
+    },
+    {
+      "name": "aws-solutions-constructs-aws-cloudfront-apigateway-lambda",
+      "version": "2.30.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-solutions-constructs-aws-cloudfront-apigateway",
+      "version": "2.30.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-solutions-constructs-core",
+      "version": "2.30.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.66.0",
+      "vulns": []
+    },
+    {
+      "name": "aws-cdk-aws-lambda-python-alpha",
+      "version": "2.64.0a0",
+      "vulns": []
+    },
+    {
+      "name": "pytest",
+      "version": "7.2.1",
+      "vulns": []
+    },
+    {
+      "name": "pluggy",
+      "version": "1.0.0",
+      "vulns": []
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.0.0",
+      "vulns": []
+    },
+    {
+      "name": "tomli",
+      "version": "2.0.1",
+      "vulns": []
+    },
+    {
+      "name": "packaging",
+      "version": "23.0",
+      "vulns": []
+    },
+    {
+      "name": "bandit",
+      "version": "1.7.4",
+      "vulns": []
+    },
+    {
+      "name": "stevedore",
+      "version": "5.0.0",
+      "vulns": []
+    },
+    {
+      "name": "pbr",
+      "version": "5.11.1",
+      "vulns": []
+    },
+    {
+      "name": "gitpython",
+      "version": "3.1.31",
+      "vulns": []
+    },
+    {
+      "name": "gitdb",
+      "version": "4.0.10",
+      "vulns": []
+    },
+    {
+      "name": "smmap",
+      "version": "5.0.0",
+      "vulns": []
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0",
+      "vulns": []
+    },
+    {
+      "name": "pip-audit",
+      "version": "2.4.15",
+      "vulns": []
+    },
+    {
+      "name": "html5lib",
+      "version": "1.1",
+      "vulns": []
+    },
+    {
+      "name": "pip-requirements-parser",
+      "version": "32.0.1",
+      "vulns": []
+    },
+    {
+      "name": "cachecontrol",
+      "version": "0.12.12",
+      "vulns": []
+    },
+    {
+      "name": "pip-api",
+      "version": "0.0.30",
+      "vulns": []
+    },
+    {
+      "name": "resolvelib",
+      "version": "0.9.0",
+      "vulns": []
+    },
+    {
+      "name": "toml",
+      "version": "0.10.2",
+      "vulns": []
+    },
+    {
+      "name": "filelock",
+      "version": "3.9.0",
+      "vulns": []
+    },
+    {
+      "name": "webencodings",
+      "version": "0.5.1",
+      "vulns": []
+    },
+    {
+      "name": "rich",
+      "version": "13.3.1",
+      "vulns": []
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "2.1.0",
+      "vulns": []
+    },
+    {
+      "name": "pygments",
+      "version": "2.14.0",
+      "vulns": []
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "vulns": []
+    },
+    {
+      "name": "cyclonedx-python-lib",
+      "version": "3.1.5",
+      "vulns": []
+    },
+    {
+      "name": "sortedcontainers",
+      "version": "2.4.0",
+      "vulns": []
+    },
+    {
+      "name": "packageurl-python",
+      "version": "0.10.4",
+      "vulns": []
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.0.9",
+      "vulns": []
+    },
+    {
+      "name": "requests",
+      "version": "2.28.2",
+      "vulns": []
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.0.1",
+      "vulns": []
+    },
+    {
+      "name": "msgpack",
+      "version": "1.0.4",
+      "vulns": []
+    },
+    {
+      "name": "cdk-nag",
+      "version": "2.22.13",
+      "vulns": []
+    }
+  ],
+  "fixes": []
+}
