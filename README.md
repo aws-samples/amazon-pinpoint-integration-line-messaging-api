@@ -5,8 +5,7 @@ Refer to this [AWS Blog](https://aws-blogs-prod.amazon.com/messaging-and-targeti
 ## Architecture
 
 This solution uses [Amazon Pinpoint](https://aws.amazon.com/pinpoint/),[AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) and [LINE Messaging API](https://developers.LINE.biz/en/docs/messaging-api/overview/)
-![Alt text](images/Pasted%20image%2020230306180624.png)
-
+![Alt text](images/Pasted%20image%2020230318183702.png)
 The solution architecture can be broken up into two main sections:
 
 - Steps 1-4 cover handling inbound user events and managing user data within Amazon Pinpoint.
@@ -19,9 +18,9 @@ The solution architecture can be broken up into two main sections:
    1. If the user _subscribes_ to the channel, a new endpoint will be added to Amazon Pinpoint's user database.
    2. If the user _unsubscribes_ from the channel, the corresponding endpoint (identified by the LINE User ID) is deleted from Amazon Pinpoint's user database.
 5. Amazon Pinpoint initiates a call to a Lambda function via [Custom Channel](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html). Of particular importance would be the `Data` field, which can be specified within the Amazon Pinpoint console to modify the content of the message.
-6. If the message contains image/audio/video files, the Lambda will request the file from the corresponding Amazon S3 buckets to be included in the payload for step 7.
+6. If the message contains image/audio/video files, the Lambda will request the file from the corresponding Amazon S3 buckets to be included for step 7. Amazon S3 then sends back the [presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) containing the requested file(s).
 7. The Lambda function puts the message in the correct format expected by the LINE Messaging API and sends it over to the LINE Platform.
-8. The LINE Messaging API receives the request and processes the message content, finally sending the message to the corresponding user on the LINE Mobile App.
+8. The LINE Messaging API receives the request and processes the message content. If necessary, it will retrieve and download the file from Amazon S3 using the **presigned URLs** generated in step 6 then finally send the message to the corresponding user on the LINE Mobile App.
 
 > **Note** 
 > Line is a third-party service that is subjected to additional terms and charges. Amazon Web Services isn’t responsible for any third-party service that you use to send messages with custom channels.
