@@ -41,8 +41,10 @@ To deploy this solution, you must have the following:
    - If you have never worked with LINE Messaging API before, you should login to to [LINE Developers Console](https://developers.LINE.biz/console/) using one of the following accounts.
      - LINE account
      - Business account
-   - Afterwards, you should create a new **provider**.![Alt text](images/Pasted%20image%2020230306180319.png)
-   - Within the provider page, you can then choose to create a new channel. For our Integration purposes, we will be choosing **Messaging API** channel type. ![Alt text](images/Pasted%20image%2020230306180427.png)
+   - Afterwards, you should create a new **provider**.
+     ![Alt text](images/Pasted%20image%2020230306180319.png)
+   - Within the provider page, you can then choose to create a new channel. For our Integration purposes, we will be choosing **Messaging API** channel type.
+     ![Alt text](images/Pasted%20image%2020230306180427.png)
 
 ### Preparation
 
@@ -70,7 +72,8 @@ cdk bootstrap --profile LINE-integration \
 
 ### Getting LINE Official Account Credentials
 
-6. Log in to [LINE developer console](https://account.LINE.biz/login).![Alt text](images/Pasted%20image%2020230306173912.png)
+6. Log in to [LINE developer console](https://account.LINE.biz/login).
+   ![Alt text](images/Pasted%20image%2020230306173912.png)
 7. Once inside, choose the channel you'd like to have integrated with Amazon Pinpoint. This assumes that you've created a **provider** and a **channel** as mentioned in the **Prerequisite** section.
    ![Alt text](images/Pasted%20image%2020230306174012.png)
 8. In the **Basic settings** tab, scroll down and note down the **Channel Secret**.
