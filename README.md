@@ -72,12 +72,11 @@ cdk bootstrap --profile LINE-integration \
 
 ### Getting LINE Official Account Credentials
 
-6. Log in to [LINE developer console](https://account.LINE.biz/login).
+6. Log in to [LINE developer console](https://account.LINE.biz/login).\
    ![Alt text](images/Pasted%20image%2020230306173912.png)
 7. Once inside, choose the channel you'd like to have integrated with Amazon Pinpoint. This assumes that you've created a **provider** and a **channel** as mentioned in the **Prerequisite** section.
    ![Alt text](images/Pasted%20image%2020230306174012.png)
-8. In the **Basic settings** tab, scroll down and note down the **Channel Secret**.
-9. In the **Messaging API** tab, scroll down and click on **Edit** under Webhook URL and enter the **API Gateway endpoint URL** you have noted down in step 5. Click on **Update** to save the changes.
+8. In the **Basic settings** tab, scroll down and note down the **Channel Secret**. 9. In the **Messaging API** tab, scroll down and click on **Edit** under Webhook URL and enter the **API Gateway endpoint URL** you have noted down in step 5. Click on **Update** to save the changes.
 
 > **Note**
 > Once you have finished entering your Channel Secret token in step 14, you can return to this page to **Verify** your webhook URL is set up correctly).
