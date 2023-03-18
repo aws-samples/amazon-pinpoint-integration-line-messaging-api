@@ -9,7 +9,7 @@ This solution uses [Amazon Pinpoint](https://aws.amazon.com/pinpoint/),[AWS Lam
 The solution architecture can be broken up into two main sections:
 
 - Steps 1-4 cover handling inbound user events and managing user data within Amazon Pinpoint.
-- Steps 5-7 cover how to send outbound campaigns via Amazon Pinpoint Custom Channel.
+- Steps 5-8 cover how to send outbound campaigns via Amazon Pinpoint Custom Channel.
 
 1. The customer subscribes to the business' LINE channel.
 2. The subscribe/unsubscribe event is received and checked via Amazon API Gateway.
