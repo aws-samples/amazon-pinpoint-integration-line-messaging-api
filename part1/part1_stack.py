@@ -23,9 +23,9 @@ class Part1Stack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         # Initialize Bucket
-        image_bucket = _s3.Bucket(self,"image_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY)
-        audio_bucket = _s3.Bucket(self,"audio_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY)
-        video_bucket = _s3.Bucket(self,"video_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY)
+        image_bucket = _s3.Bucket(self,"image_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY,object_ownership=_s3.ObjectOwnership.BUCKET_OWNER_PREFERRED)
+        audio_bucket = _s3.Bucket(self,"audio_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY,object_ownership=_s3.ObjectOwnership.BUCKET_OWNER_PREFERRED)
+        video_bucket = _s3.Bucket(self,"video_s3_bucket",block_public_access=_s3.BlockPublicAccess.BLOCK_ALL,enforce_ssl=True,versioned=True,access_control=_s3.BucketAccessControl.LOG_DELIVERY_WRITE,server_access_logs_prefix='access-logs',removal_policy=RemovalPolicy.DESTROY,object_ownership=_s3.ObjectOwnership.BUCKET_OWNER_PREFERRED)
         # Deploy Sample Files onto Buckets
         image_bucket_deployment = _s3_deploy.BucketDeployment(self,"image_bucket_deploy",destination_bucket=image_bucket,sources=[_s3_deploy.Source.asset("./assets/files/image_files/")])
         audio_bucket_deployment = _s3_deploy.BucketDeployment(self,"audio_bucket_deploy",destination_bucket=audio_bucket,sources=[_s3_deploy.Source.asset("./assets/files/audio_files/")])
