@@ -1,7 +1,11 @@
-aws-cdk-lib==2.64.0
+aws-cdk-lib>=2.64.0
 constructs>=10.0.0,<11.0.0
 line-bot-sdk >=2.4.1
 websocket-client >= 1.5.1
 boto3 >=1.26.69
-aws-solutions-constructs.aws-cloudfront-apigateway-lambda==2.30.0
+aws-solutions-constructs.aws-cloudfront-apigateway-lambda==2.41.0
 aws-cdk.aws-lambda-python-alpha ==2.64.0-alpha.0
+pytest>=7.2.1
+bandit>=1.7.4
+pip-audit>=2.4.14
+cdk-nag>=2.22.13
